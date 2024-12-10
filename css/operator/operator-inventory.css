@@ -1,0 +1,562 @@
+/*Importing Google Fonts- Poppins */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(#F1FAFF, #CBE4FF);
+}
+
+.sidebar{
+    width: 270px;
+    position: fixed;
+    margin: 16px;
+    border-radius: 16px;
+    background: #151A2D;
+    height: calc(100vh - 32px);
+    transition: 0.4s ease;
+}
+
+.sidebar.collapsed{
+    width: 85px;
+}
+
+
+.sidebar-header{
+    position: relative;
+    display: flex;
+    padding: 25px 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-header .header-logo img{
+    width: 46px;
+    height: 46px;
+    display: block;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.sidebar-header .toggler{
+    height: 35px;
+    width: 35px;
+    border: none;
+    color: #151A2D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    background: #fff;
+    transition: 0.4s ease;
+}
+
+.sidebar-header .sidebar-toggler{
+    position: absolute;
+    right: 20px;
+}
+
+.sidebar.collapsed .sidebar-header .sidebar-toggler {
+    transform: translate(-4px, 65px);
+}
+
+.sidebar-header .toggler:hover{
+    background: #dde4fb;
+}
+
+.sidebar-header .menu-toggler{
+    display: none;
+}
+
+.sidebar-header .sidebar-toggler span{
+    font-size: 1.75rem;
+    transition: 0.4s ease;
+}
+
+.sidebar.collapsed .sidebar-header .sidebar-toggler span{
+    transform: rotate(180deg);
+}
+
+.sidebar-nav .nav-list{ 
+    list-style: none;
+    display: flex;
+    gap: 4px;
+    padding: 0 15px;
+    flex-direction: column;
+    transform: translateY(15px);
+    transition: 0.4s ease;
+}
+
+.sidebar.collapsed .sidebar-nav .primary-nav{
+    transform: translateY(65px);
+}
+
+.sidebar-nav .nav-link{
+    color: #fff;
+    display: flex;
+    gap: 12px;
+    white-space: nowrap;
+    border-radius: 8px;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    transition: 0.4s ease;
+}
+
+.sidebar-nav .nav-link:hover{
+    background: #fff; 
+    color: #151A2D;
+}
+
+.sidebar-nav .nav-link .nav-label{
+    transition: opacity 0.4s ease;
+}
+
+
+  .nav-list .nav-link.nav-list-active {
+    background-color: #fff !important; /* Use !important to override */
+    color: black !important;
+    cursor: none;   /* Disable pointer events */
+  }
+
+.sidebar.collapsed .sidebar-nav .nav-link .nav-label{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar-nav .nav-item{
+    position: relative;
+}
+
+.sidebar-nav .nav-item img{
+    position: relative;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.sidebar-nav .nav-tooltip{
+    position: absolute;
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    top: -10px;
+    left: calc(100% + 25px);
+    color: #151A2D;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: #fff;
+    white-space: nowrap;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: 0s;
+}
+
+.sidebar.collapsed .sidebar-nav .nav-tooltip{
+    display: block;
+}
+
+.sidebar-nav .nav-item:hover .nav-tooltip{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(50%);
+    transition: 0.4s ease;
+}
+
+.sidebar-nav .secondary-nav{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}
+
+
+/* Style for the main-body div */
+.main-body {
+    margin-left: 270px; /* Leaves space for the sidebar */
+    padding-left: 20px;
+    padding-top: 20px;
+    border-radius: 16px; /* Matches the sidebar styling */
+    transition: margin-left 0.4s ease; /* Smooth transition when the sidebar collapses */
+    min-height: calc(100vh - 32px); /* Matches the sidebar's height */
+    overflow: auto; /* Ensures content doesn't overflow */
+}
+
+.main-body h1,p{
+    padding-left: 20px;
+    text-align: center;
+}
+
+/* Adjust for collapsed sidebar */
+.sidebar.collapsed ~ .main-body {
+    margin-left: 85px; /* Smaller space when the sidebar is collapsed */
+}
+
+.inventory-searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the right */
+    margin-top: 50px;
+    margin-bottom: 20px;
+    position: relative; /* Ensure the search icon is positioned correctly */
+}
+
+.inventory-searchbar input[type="search"] {
+    width: 150px; /* Adjust the width as needed */
+    height: 34px;
+    padding: 10px 40px 10px 10px; /* Add extra space on the right for the icon */
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.inventory-searchbar button {
+    float: right;
+    padding: 4px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.inventory-searchbar button:hover {
+    background: #ccc;
+}
+
+
+.inventory-filter {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Adjust the spacing between the search bar and filter as needed */
+    padding-right: 30px;
+}
+
+.inventory-filter label {
+    margin-right: 10px;
+}
+
+.inventory-filter select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px; /* Adjust the size of the icon */
+    pointer-events: none; /* Ensures the icon doesn't block clicking the input */
+    padding-right: 315px;
+}
+
+.inventory {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.inventory .inventory-table {
+  margin-left: 30px;
+  margin-right: 40px;
+  width: auto; /* Adjusts to content size */
+  max-width: calc(100% - 60px); /* Prevents overflow */
+}
+
+.equipment-table{
+    margin-left: 30px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    width: auto; /* Adjusts to content size */
+    max-width: calc(100% - 60px); /* Prevents overflow */
+}
+
+thead {
+    background-color: #151A2D;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    margin: 10px;
+}
+
+th{
+    font-size: 20px;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    background: white;
+}
+
+h2{
+    margin-left: 30px;
+}
+  .add-btn {
+    padding: 10px 20px; /* Adjust button size */
+    font-size: 16px; /* Font size for button text */
+    color: #fff; /* White text */
+    background-color: #151A2D; /* Dark background to match theme */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+  
+  .add-btn:hover {
+    background-color: green; /* Lighter shade on hover */
+  }
+
+  .add-btn-equipment {
+    padding: 10px 20px; /* Adjust button size */
+    font-size: 16px; /* Font size for button text */
+    color: #fff; /* White text */
+    background-color: #151A2D; /* Dark background to match theme */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+  
+  .add-btn-equipment:hover {
+    background-color: green; /* Lighter shade on hover */
+  }
+
+.edit-btn, .delete-btn {
+    width: 100px; /* Set a fixed width for both buttons */
+    color: white; /* Set the font color to white */
+    background-color: white; /* Set the background color to white */
+    padding: 5px 10px; /* Add some padding */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change the cursor to pointer on hover */
+    font-size: 16px; /* Set the /* Dark color for the title */
+    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+   /* Dark color for labels */  display: inline-block; /* Ensure buttons are inline */
+    text-align: center; /* Center the text inside the button */
+    margin-bottom: 10px; /* Add some spacing to the right */
+}
+
+.edit-btn {
+    color: green; /* Set the font color to green */
+    border: 1px solid green; /* Set the border color to green */
+    width: 100px;
+}
+
+.edit-btn:hover {
+    background-color: green; /* Change background color on hover */
+    color: white; /* Change font color on hover */
+}
+
+.delete-btn {
+    color: red; /* Set the font color to red */
+    border: 1px solid red; /* Set the border color to red */
+    width: 100px;
+}
+
+.delete-btn:hover {
+    background-color: red; /* Change background color on hover */
+    color: white; /* Change font color on hover */
+}
+
+.equipment{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+/* Modal Styles */
+.modal {
+    display: flex; /* Change from 'none' to 'flex' to enable flexbox */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.modal h2 {
+    color: #151A2D; /* Dark color for the title */
+    margin-bottom: 20px;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    color: #151A2D; /* Dark color for labels */
+    text-align: left;
+}
+
+.modal input[type="text"],
+.modal input[type="number"],
+.modal input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.modal-submit-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #151A2D; /* Dark background to match theme */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-submit-btn:hover {
+    background-color: green; /* Lighter shade on hover */
+}
+
+/* Modal Label and Select Styling */
+.modal label {
+    display: block;
+    margin-bottom: 10px;
+    color: #151A2D; /* Dark color for labels */
+    text-align: left;
+    font-weight: 600; /* Make label text bold */
+    font-size: 16px; /* Adjust font size */
+}
+
+.modal select {
+    width: 100%; /* Full width of the container */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    font-size: 16px;
+    color: #151A2D; /* Dark text color */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.modal select:focus {
+    border-color: #151A2D; /* Highlight border on focus */
+    outline: none; /* Remove default focus outline */
+    background-color: #fff; /* White background on focus */
+}
+
+.modal select option {
+    padding: 10px;
+    background-color: #fff; /* White background for options */
+    color: #151A2D; /* Ensure the option text is visible */
+}
+
+.modal select option:hover {
+    background-color: #ddd; /* Highlight option on hover */
+}
+
+@media (max-width: 1024px){
+    .sidebar{
+        height: 56px;
+        overflow-y: hidden;
+        margin: 13px;
+        scrollbar-width: none;
+        width: calc(100% - 28px);
+        max-height: calc(100vh - 28px);
+    }
+
+    .sidebar.menu-active {
+        overflow-y: auto;
+    }
+
+    .sidebar-header{
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: #151A2D;
+        padding: 8px 10px;
+        border-radius: 16px;
+    }
+
+    .sidebar-header .header-logo img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .sidebar-header .sidebar-toggler,
+    .sidebar-header .sidebar-toggler{
+        display: none;
+    }
+
+    .sidebar-header .menu-toggler{
+        display: flex;
+        height: 30px;
+        width: 30px;
+    }
+
+    .sidebar-header .menu-toggler span{
+        font-size: 1.3rem;
+    }
+
+    .sidebar-nav .nav-list{
+        padding: 0 10px;
+    }
+
+    .sidebar-nav .nav-link{
+        gap: 10px;
+        padding: 10px;
+        font-size: 0.94rem;
+    }
+
+    .sidebar-nav .nav-link .nav-icon{
+        font-size: 1.37rem;
+    }
+
+    .sidebar-nav .secondary-nav{
+        position: relative;
+        bottom: 0;
+        margin: 40px 0 30px;
+    }
+
+    .main-body {
+        margin-left: 0; /* Takes full width */
+        margin-top: 70px; /* Leaves space for the sticky sidebar header */
+        padding: 10px;
+        border-radius: 0; /* Removes rounded corners for a cleaner mobile view */
+    }
+}

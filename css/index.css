@@ -1,0 +1,198 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #12c2f6; /* Soft pastel blue */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Ensures full height for mobile screens */
+  padding: 1rem; /* Adds padding for smaller screens */
+}
+     
+/* Welcome section styling */
+.welcome-section {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 2rem; /* Space between welcome section and form */
+  animation: fadeIn 2s ease-in-out;
+}
+
+.welcome-section .welcome-text {
+  font-size: 2rem; /* Adjust size as needed */
+  color: #1283f6; /* Soft blue-gray */
+  font-weight: bold;
+}
+
+/* Container for the form */
+.container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  width: 100%; /* Full width for small screens */
+  max-width: 400px; /* Limit the width for larger screens */
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #1283f6; /* Soft blue-gray */
+  text-align: center;
+}
+
+/* Styling for input-group */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #b5d6e0; /* Pastel blue border */
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #76c7e0; /* Slightly brighter pastel blue */
+  box-shadow: 0 0 5px rgba(118, 199, 224, 0.5);
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #9dbcc5; /* Light pastel blue-gray */
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 5px;
+  font-size: 0.85rem;
+  color: #1283f6; /* Slightly brighter pastel blue */
+}
+
+/* Styling for password field and toggle icon */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 40px; /* Add space for the eye icon */
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Position the icon inside the input field */
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #1283f6; /* Default color for the icon */
+  cursor: pointer;
+}
+
+/* Styling for buttons */
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #1283f6; /* Soft pastel blue */
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #12c2f6; /* Lighter pastel blue */
+}
+
+/* Styling for the forgot password link */
+.forgot-password {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: #1283f6; /* Soft pastel blue */
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #12c2f6; /* Soft blue-gray */
+  text-decoration: underline;
+}
+
+/* Animation for fading text */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* For tablets and small laptops */
+  body {
+      padding: 1.5rem; /* Add padding for smaller screens */
+  }
+
+  .container {
+      padding: 1.5rem; /* Reduce padding for smaller devices */
+      border-radius: 10px; /* Slightly smaller border radius */
+  }
+
+  .title {
+      font-size: 1.8rem; /* Slightly smaller font size for titles */
+  }
+
+  .btn {
+      font-size: 0.9rem; /* Adjust button font size */
+  }
+
+  .forgot-password {
+      font-size: 0.85rem; /* Smaller text for the link */
+  }
+}
+
+@media (max-width: 480px) {
+  /* For mobile devices */
+  .container {
+      max-width: 100%; /* Full width for very small screens */
+      padding: 1rem; /* Further reduce padding for mobiles */
+  }
+
+  .title {
+      font-size: 1.6rem; /* Smaller title for mobile devices */
+  }
+
+  .btn {
+      font-size: 0.85rem; /* Smaller text for buttons */
+      padding: 8px; /* Smaller button padding */
+  }
+
+  .forgot-password {
+      font-size: 0.8rem; /* Adjust link size */
+  }
+}
